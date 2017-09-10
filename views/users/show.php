@@ -20,7 +20,7 @@ require_once("./config.php");
         foreach ($data['users'] as $user) : ?>
 
     <tr>
-        <td> <?= $user->login?></td>
+        <td> <?= $user->login ?></td>
         <td> <?= $user->username ?></td>
         <td> <?= $user->age; ?></td>
         <td> <?= $user->description ?></td>
@@ -53,7 +53,7 @@ require_once("./config.php");
     <br>
     <div>
         <div>
-            <button type="submit" >Сохранить</button>
+            <button type="submit">Сохранить</button>
 
         </div>
     </div>

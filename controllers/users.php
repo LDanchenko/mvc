@@ -62,7 +62,6 @@ class Users
             $out = 0;
         }
         echo $out;
-
     }
 
     public function change()

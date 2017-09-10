@@ -3,7 +3,6 @@ require_once("./config.php");
 ?>
 
 
-
 <h1>Список пользователей</h1>
 <table cellspacing="2" border="1" cellpadding="5">
     <tr>
@@ -20,8 +19,8 @@ require_once("./config.php");
     foreach ($data['users'] as $user) : ?>
 
     <tr>
-        <td> <a href="/users/show/<?= $user->id ?>"><?= $user->id ?></a></td>
-        <td> <?= $user->login?></td>
+        <td><a href="/users/show/<?= $user->id ?>"><?= $user->id ?></a></td>
+        <td> <?= $user->login ?></td>
         <td> <?= $user->username ?></td>
         <td> <?= $user->age; ?></td>
         <td> <?= $user->description ?></td>

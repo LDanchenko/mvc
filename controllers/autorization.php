@@ -1,6 +1,8 @@
 <?php
+
 namespace App;
-require_once ('./config.php');
+require_once('./config.php');
+
 class Autorization
 {
     public function index()
@@ -15,8 +17,7 @@ class Autorization
         $passwd = strip_tags($_POST['passwd']);
         $data['users'] = \User::getUsersLogin($login);
 
-        foreach ($data['users'] as $user)
-        {
+        foreach ($data['users'] as $user) {
             $id = $user->id;
             $password = $user->password;
         }
@@ -29,11 +30,17 @@ class Autorization
             } else {
                 $exist = 2; //пароль не подошел
             }
-        }
-        else {
+        } else {
             $exist = 0;
 
         }
         echo json_encode($exist);
     }
+
+    public function quit()
+    {
+        $_SESSION['userid'] = null;
+        header('Location: index');
+    }
+
 }

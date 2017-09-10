@@ -68,7 +68,7 @@ $('#avtorization_button').on('click', function (e) {
 
     else {
         $.ajax({
-            url: 'autorization/autorzation',
+            url: 'autorzation',
             method: 'POST', //отправляем данные методом пост
             data: {
                 login: login,
@@ -79,7 +79,7 @@ $('#avtorization_button').on('click', function (e) {
             if (answer == 1) {
                 alert('Вы успешно авторизировались');
                 $("#avtor_form").trigger('reset');
-                // location.reload();
+                location.reload();
             }
             else if (answer == 0) {
                 alert("Такого пользователя нет!");
@@ -198,7 +198,7 @@ $('#registration_button').on('click', function (e) {
 
 
 $("form[name='usernewphoto']").submit(function (e) {
-   // var formData = new FormData($(this)[0]); //все данные из формы
+    // var formData = new FormData($(this)[0]); //все данные из формы
     var t = location.href;
     var $input = $("#userphoto");
     var fd = new FormData;

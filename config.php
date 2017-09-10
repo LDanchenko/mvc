@@ -1,21 +1,21 @@
 <?php
-require_once ("models/user.php");
-require_once ("models/files.php");
-require_once ("vendor/autoload.php");
+require_once("models/user.php");
+require_once("vendor/autoload.php");
 use Illuminate\Database\Capsule\Manager as Capsule;
+
 session_start();
 
 $capsule = new Capsule;
 
 $capsule->addConnection([
-    'driver'    => 'mysql',
-    'host'      => 'localhost',
-    'database'  => 'mvcweb',
-    'username'  => 'root',
-    'password'  => '',
-    'charset'   => 'utf8',
+    'driver' => 'mysql',
+    'host' => 'localhost',
+    'database' => 'mvcweb',
+    'username' => 'root',
+    'password' => '',
+    'charset' => 'utf8',
     'collation' => 'utf8_unicode_ci',
-    'prefix'    => '',
+    'prefix' => '',
 ]);
 
 $capsule->setAsGlobal();

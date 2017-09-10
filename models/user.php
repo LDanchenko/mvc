@@ -12,8 +12,9 @@ class User extends \Illuminate\Database\Eloquent\Model
         return User::all();
     }
 
-    public static  function getUser($id){
-    return User::where('id', '=', $id)->get();
+    public static function getUser($id)
+    {
+        return User::where('id', '=', $id)->get();
     }
 
     public static function getAsc()
@@ -28,12 +29,11 @@ class User extends \Illuminate\Database\Eloquent\Model
         return User::orderBy('age', 'DESC')->get();
     }
 
-     public static function getUsersLogin($login)
-     {
+    public static function getUsersLogin($login)
+    {
 
-         return User::where('login', '=', $login)->get();
-
-     }
+        return User::where('login', '=', $login)->get();
+    }
 
     public static function createUser($login, $password)
     {
@@ -41,7 +41,6 @@ class User extends \Illuminate\Database\Eloquent\Model
         $user->login = $login;
         $user->password = $password;
         $user->save();
-        //return User::insert('insert into users (login, password) values ($login, $password)');
     }
 
     public static function updateUser($id, $filepath, $username, $birthday, $description)

@@ -1,5 +1,5 @@
 <?php
-if (($_SESSION['userid'])==43) :?>
+if (($_SESSION['userid']) == 43) :?>
 
     <div>
 
@@ -37,6 +37,8 @@ if (($_SESSION['userid'])==43) :?>
             </div>
         </div>
     </form>
+<?php else : ?>
+    Авторизируйтесь как администратор
 <?php endif; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="/js/main4.js"></script>

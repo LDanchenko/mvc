@@ -2,14 +2,16 @@
 
 namespace App;
 
-require_once ("./function.php");
+require_once("./function.php");
 
-class Files{
+class Files
+{
 
-    public function index(){
+    public function index()
+    {
 
-        $data['users'] = \Files::getPhoto();
+        $data['users'] = \User::getAllUsers();
         $view = new \View();
-        $view -> render('files/index', $data);
+        $view->render('files/index', $data);
     }
 }

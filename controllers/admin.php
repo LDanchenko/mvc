@@ -1,7 +1,9 @@
 <?php
+
 namespace App;
-require_once ('./config.php');
-require_once ('./function.php');
+require_once('./config.php');
+require_once('./function.php');
+
 class Admin
 {
     public function index()
@@ -10,14 +12,14 @@ class Admin
         $view->render('admin/index');
     }
 
-    public function create(){
+    public function create()
+    {
         $login = strip_tags($_POST['login']);
         $passwd = strip_tags($_POST['passwd']);
 
         $data['users'] = \User::getUsersLogin($login);
 
-        foreach ($data['users'] as $user)
-        {
+        foreach ($data['users'] as $user) {
             $id = $user->id;
 
         }
@@ -25,9 +27,7 @@ class Admin
 //если уже есть такой логин
         if (isset($id)) {
             $exist = 1;
-        }
-
-        //если нет
+        } //если нет
         else {
 
 
@@ -39,5 +39,5 @@ class Admin
         echo json_encode($exist);
 
 
-}
+    }
 }

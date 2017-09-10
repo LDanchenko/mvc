@@ -205,11 +205,11 @@ $("form[name='usernewphoto']").submit(function (e) {
 
     fd.append('img', $input.prop('files')[0]);
     fd.append('link', t);
-   // if (document.getElementById("userphoto").files.length == 0) { // проверяем инпут с картинкой на пустоту
-     //   alert("Вы забыли загрузить картинку!");
-    //}
+    if (document.getElementById("userphoto").files.length == 0) { // проверяем инпут с картинкой на пустоту
+        alert("Вы забыли загрузить картинку!");
+    }
 
-   // else {
+    else {
         $.ajax({
 
             url: './../../users/change',
@@ -236,6 +236,6 @@ $("form[name='usernewphoto']").submit(function (e) {
             contentType: false,
             processData: false
         });
-    e.preventDefault();
-
+        e.preventDefault();
+    }
 });

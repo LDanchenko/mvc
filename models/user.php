@@ -54,4 +54,12 @@ class User extends \Illuminate\Database\Eloquent\Model
         $user->description = $description;
         $user->save();
     }
+
+    public static function updatePhoto($id, $filepath)
+    {
+
+        $user = User::find($id);
+        $user->photo = $filepath;
+        $user->save();
+    }
 }

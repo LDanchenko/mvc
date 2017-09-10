@@ -68,10 +68,28 @@ class Users
     public function change()
     {
         $file = $_FILES['img'];
-
-
-
-        print_r (var_dump($_POST['link']));
+        $link = $_POST['link'];
+        $routes = explode('/', $link); //режем url на массив
+        $im = isImage($file);
+        if ($im == 1) {
+            $uploaddir = './uploads/';
+            $userid = (int)$routes[5];
+            $name = $_FILES['img']['type'];
+            $tmp = explode('/', $name);
+            $type = end($tmp);
+            $file = $userid . "." . $type;
+            $uploadfile = $uploaddir . basename($file);
+            if (move_uploaded_file($_FILES['img']['tmp_name'], $uploadfile)) {
+                $filepath = $uploaddir . basename($file);
+                \User::updatePhoto($userid, $filepath);
+                $out = 1;
+            } else {
+                $out = 2;
+            }
+        } else {
+            $out = 0;
+        }
+        echo $out;
     }
 
     public function show()

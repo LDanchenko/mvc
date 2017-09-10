@@ -197,27 +197,45 @@ $('#registration_button').on('click', function (e) {
 });
 
 
+$("form[name='usernewphoto']").submit(function (e) {
+   // var formData = new FormData($(this)[0]); //все данные из формы
+    var t = location.href;
+    var $input = $("#userphoto");
+    var fd = new FormData;
 
+    fd.append('img', $input.prop('files')[0]);
+    fd.append('link', t);
+   // if (document.getElementById("userphoto").files.length == 0) { // проверяем инпут с картинкой на пустоту
+     //   alert("Вы забыли загрузить картинку!");
+    //}
 
-// Вешаем функцию на событие
-// Получим данные файлов и добавим их в переменную
+   // else {
+        $.ajax({
 
-//$('#userphoto').change(function() {
-//$("img").bind("click", function() {
-$('#change_img').on('click', function (e) {
-    //  var formData = new FormData($(this)[0]);
-    var id = $(this).closest('tr').find('td:first').text();
-
-    $.ajax({
-        url: 'users/changePhoto',
-        method: 'POST', //отправляем данные методом пост
-        data: {
-            id: id
-        }
-    }).done(function (data) {//ответ от формы
-
-        var answer = JSON.parse(data);
-
-    });
+            url: './../../users/change',
+            type: "POST",
+            data: fd,
+            async: false,
+            success: function (msg) {
+                if (msg == 1) {
+                    alert("Картинка корректна и была успешно загружена");//сделать по всем данным
+                    location.reload();
+                }
+                if (msg == 2) {
+                    alert("Картинка не загружена");//сделать по всем данным
+                }
+                if (msg == 0) {
+                    alert("Картинка не загружена, попробуйте другой формат");//сделать по всем данным
+                }
+            },
+            error: function (msg) {
+                alert("Произошла ошибка!");
+                // location.reload();
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    e.preventDefault();
 
 });

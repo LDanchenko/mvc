@@ -65,24 +65,17 @@ class Users
 
     }
 
-    public function changePhoto(){
-        var_dump($_FILES);
-        $file = $_FILES['userphoto'];
-        $r = $_POST['id'];
-        echo 'rr   '. '  ' . $r . ' ' . $file;
-        $uploaddir = './uploads/';
-        $uploadfile = $uploaddir . basename($_FILES['userphoto']['name']);
-        if (move_uploaded_file($_FILES['userphoto']['tmp_name'], $uploadfile)) {
-            //$filepath = $uploaddir . basename($file);
-            //$username = strip_tags($_POST['username']);
-            //$birthday = $_POST['birthday'];
-            //$description = strip_tags($_POST['description']);
-           // \User::updateUser($userid, $filepath, $username, $birthday, $description);
-            $out = 1;
-        }
+    public function change()
+    {
+        $file = $_FILES['img'];
+
+
+
+        print_r (var_dump($_POST['link']));
     }
 
-    public function show(){
+    public function show()
+    {
         $routes = explode('/', $_SERVER['REQUEST_URI']); //режем url на массив
         $id = (int)$routes[3];
 
